@@ -1,0 +1,20 @@
+To run them all:
+python autotune.py --variants fc,gap,torch_fc --epochs 20 --patience 5
+
+
+To run one at a time
+python autotune.py --variants gap --epochs 20 --patience 5
+
+
+
+
+
+
+
+--flip_p 0.3 (pass augmentation prob to the final main.py runs)
+
+--pretrained (for torch_* variants if you want ImageNet weights)
+
+--enforce_7x7 (helpful if you want GAP to land on a 7×7 feature map)
+
+python autotune.py --variants fc,gap,torch_fc --epochs 20 --patience 5 --flip_p 0.3 --pretrained --enforce_7x7

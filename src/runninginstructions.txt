@@ -1,3 +1,34 @@
+from scratch with fc (normal)
+python .\tuning.py --variant fc --stage act_lr_dropout --epochs 20 --patience 5 --height 224 --width 224
+
+
+from scratch vgg with gap
 python .\tuning.py --variant gap --stage act_lr_dropout --epochs 20 --patience 5 --height 224 --width 224
+
+
+pretrained with fc head
+python .\tuning.py --variant torch_fc --stage act_lr_dropout --epochs 20 --patience 5 --height 224 --width 224 --pretrained
+
+
+pretrained with gap no fc
+python .\tuning.py --variant torch_gap --stage act_lr_dropout --epochs 20 --patience 5 --height 224 --width 224 --pretrained
+
+
+
+
+
+other shit
+
+
+have autotune pick top 2 and run main.py train and eval
+python .\autotune.py --variants fc --epochs 20 --patience 5 --topk 2
+python .\autotune.py --variants torch_fc --epochs 20 --patience 5 --topk 2
+python .\autotune.py --variants torch_gap --epochs 20 --patience 5 --topk 2
+
+
+
+
+
+
 
 

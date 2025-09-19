@@ -70,7 +70,7 @@ class VGG16FC(nn.Module):
         return self.classifier(x)
 
     def loss(self, outputs, targets): return self.loss_fn(outputs, targets)
-    def configure_optimizers(self):   return torch.optim.Adam(self.parameters(), lr=self.lr)
+    def configure_optimizers(self):   return torch.optim.AdamW(self.parameters(), lr=self.lr)
 
 class VGG16GAP(nn.Module):
     def __init__(self, num_classes: int, in_hw: Tuple[int,int]=(224,224), lr: float=1e-4, activation: str="relu", enforce_7x7: bool=False):
@@ -92,7 +92,7 @@ class VGG16GAP(nn.Module):
         return self.fc(x)
 
     def loss(self, outputs, targets): return self.loss_fn(outputs, targets)
-    def configure_optimizers(self):    return torch.optim.Adam(self.parameters(), lr=self.lr)
+    def configure_optimizers(self):    return torch.optim.AdamW(self.parameters(), lr=self.lr)
 
 # ---------------- torchvision VGG16 baselines ----------------
 class TorchVGG16FC(nn.Module):
@@ -111,7 +111,7 @@ class TorchVGG16FC(nn.Module):
 
     def forward(self, x): return self.backbone(x)
     def loss(self, outputs, targets): return self.loss_fn(outputs, targets)
-    def configure_optimizers(self):    return torch.optim.Adam(self.parameters(), lr=self.lr)
+    def configure_optimizers(self):    return torch.optim.AdamW(self.parameters(), lr=self.lr)
 
 class TorchVGG16GAP(nn.Module):
     """torchvision VGG16 with GAP head (no big FC blocks)."""
@@ -132,4 +132,4 @@ class TorchVGG16GAP(nn.Module):
         return self.fc(x)
 
     def loss(self, outputs, targets): return self.loss_fn(outputs, targets)
-    def configure_optimizers(self):    return torch.optim.Adam(self.parameters(), lr=self.lr)
+    def configure_optimizers(self):    return torch.optim.AdamW(self.parameters(), lr=self.lr)

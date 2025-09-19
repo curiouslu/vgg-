@@ -20,7 +20,7 @@ class Trainer:
     def fit(self, model, train_loader, val_loader, class_weights=None, optimizer=None):
         model.to(self.device)
 
-        opt = optimizer or model.configure_optimizers()
+        opt = optimizer or torch.optim.AdamW(model.parameters(), lr=getattr(model, 'lr', 1e-3), weight_decay=self.weight_decay)
         # Ensure class_weights is a tensor on the correct device
         if hasattr(model, "loss_fn") and isinstance(model.loss_fn, nn.CrossEntropyLoss):
             if class_weights is not None:

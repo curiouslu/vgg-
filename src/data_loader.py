@@ -12,7 +12,7 @@ from PIL import Image
 # -------------------- Defaults (can be overridden by build_dataloaders) --------------------
 ROOT_DIRS      = ["../data/train", "../data/valid"]   # pool labeled data, then split
 VAL_FRACTION   = 0.20                                  # 80/20 split
-TARGET_H, TARGET_W = 64, 64                            # image size
+TARGET_H, TARGET_W = 224, 224                            # image size
 BATCH_SIZE     = 32
 SEED           = 42
 

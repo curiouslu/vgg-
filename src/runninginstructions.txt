@@ -1,20 +1,15 @@
-To run them all:
-python autotune.py --variants fc,gap,torch_fc --epochs 20 --patience 5
+# 1) VGG16 from scratch (your own implementation, with FC head)
+python .\autotune.py --variants fc --epochs 20 --patience 5
 
+# 2) VGG16 from scratch with no FCs (GAP head)
+python .\autotune.py --variants gap --epochs 20 --patience 5
 
-To run one at a time
-python autotune.py --variants gap --epochs 20 --patience 5
-
-
-
-
+# 3) Pretrained VGG16 (torchvision backbone) + FC head
+python .\autotune.py --variants torch_fc --epochs 20 --patience 5
 
 
 
---flip_p 0.3 (pass augmentation prob to the final main.py runs)
+pretrained with gap
+#4) python .\autotune.py --variants torch_gap --epochs 20 --patience 5
 
---pretrained (for torch_* variants if you want ImageNet weights)
-
---enforce_7x7 (helpful if you want GAP to land on a 7×7 feature map)
-
-python autotune.py --variants fc,gap,torch_fc --epochs 20 --patience 5 --flip_p 0.3 --pretrained --enforce_7x7
+pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu126

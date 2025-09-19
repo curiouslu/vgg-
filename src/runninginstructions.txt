@@ -1,15 +1,3 @@
-# 1) VGG16 from scratch (your own implementation, with FC head)
-python .\autotune.py --variants fc --epochs 20 --patience 5
-
-# 2) VGG16 from scratch with no FCs (GAP head)
-python .\autotune.py --variants gap --epochs 20 --patience 5
-
-# 3) Pretrained VGG16 (torchvision backbone) + FC head
-python .\autotune.py --variants torch_fc --epochs 20 --patience 5
+python .\tuning.py --variant gap --stage act_lr_dropout --epochs 20 --patience 5 --height 224 --width 224
 
 
-
-pretrained with gap
-#4) python .\autotune.py --variants torch_gap --epochs 20 --patience 5
-
-pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu126
